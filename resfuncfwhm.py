@@ -3,8 +3,8 @@ import numpy as np
 from scipy.interpolate import spline
 import peakutils as pk
 D=[]
-F=[]
 for d in range(20,260,20):
+	F=[]
 	for fi in range(1,6):
 		print("Apertura: %dum\nFichero: %d"%(d,fi))
 		path="/home/rodrigo/Desktop/FAM-PL-LIBS/Archivos Práctica LIBS/FWHM vs Anchura Rendija/Red 1200 lineas por mm/"
@@ -12,8 +12,8 @@ for d in range(20,260,20):
 		L=f.readlines()
 		f.close()
 		V=[[float(j) for j in i[:-1].split(",")] for i in L]
-		lo=np.asarray([i[0] for i in V])
-		cc=np.asarray([i[1] for i in V])
+		lo=np.array([i[0] for i in V])
+		cc=np.array([i[1] for i in V])
 		#pki=pk.indexes(cc, thres=0.333, min_dist=1)
 		#interp_pki=pk.interpolate(lo,cc,ind=pki)
 		#print(interp_pki)
@@ -49,9 +49,9 @@ for d in range(20,260,20):
 		plt.ylabel("Cuentas")
 		timer.start()
 		plt.show()"""
-
-		F.append([fi,fwhm])
+		
+		F.append(fwhm)
 	D.append([d,F])
-ff=open("datarrr.dat","w")
-ff.write(str(D))
+ff=open("datos.dat","w")
+ff.write("D="+str(D))
 ff.close()
