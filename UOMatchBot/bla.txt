@@ -1,0 +1,5 @@
+#token
+#admintoken
+#adminchat_id
+#sender
+#password
